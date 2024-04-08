@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+  
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 600px; /* Adjust height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .messages-container {
+    flex-grow: 1; /* Allow messages container to grow to fill remaining space */
+    padding: 10px;
+  }
+  
+  .chat-message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    max-height: 100px; /* Fixed height for each message container */
+    overflow-y: auto; /* Enable vertical scrolling for long messages */
+  }
+  
+
+  
+  .user {
+    background-color: #d2f5d2; /* Light green background for user messages */
+    align-self: flex-start; /* Align user messages to the left */
+  }
+  
+  .admin {
+    background-color: #e0e0e0; /* Light gray background for admin messages */
+    align-self: flex-end; /* Align admin messages to the right */
+  }
+  .message-info {
+    font-size: 0.8rem; /* Decrease font size for message info */
+  }
+  
+  .message-input-form {
+    display: flex;
+    width: 100%; /* Full width for input form */
+    margin-top: 10px; /* Add margin to separate input form from messages */
+  }
+  
+  .message-input {
+    flex: 1; /* Allow input field to take up remaining space */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 8px;
+  }
+  
+  .submit-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2ebc7a;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  
