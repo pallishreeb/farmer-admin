@@ -57,8 +57,8 @@ const ContractFarmingPage = () => {
     <TopNavbar />
     <div className="flex">
       <SideNavbar />
-    <div className="container mx-auto mt-8 p-8">
-      <h2 className="text-2xl mb-4">Contract Farming</h2>
+    <div className="container mx-auto mt-2 p-8">
+      <h2 className="text-2xl mb-4">Contract Farmings</h2>
       <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
@@ -107,11 +107,11 @@ const ContractFarmingPage = () => {
                   <td className="px-6 py-4 whitespace-nowrap">{request.buyerId?.phone}</td>
                   <td className="text-left py-3 px-2">
                   {request.isApproved ? <button
-                        className="bg-green-500  text-white font-bold py-2 px-4 mr-2 rounded"
+                        className="bg-green-500  text-white font-bold py-2 px-2 mr-2 rounded"
                       >
                         Approved
                       </button> :  <button
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 rounded"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 mr-2 rounded"
                         onClick={() => handleApprove(request._id)}
                       >
                         Approve

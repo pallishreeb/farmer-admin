@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { deleteUser, getAllFarmers } from '../api'; // Import the getAllFarmers and deleteUser functions from api.js
 import { SideNavbar, TopNavbar } from '../components/Navbar';
 
 const FarmersPage = () => {
   const [farmers, setFarmers] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetchData();
   }, []);
@@ -30,12 +31,16 @@ const FarmersPage = () => {
     }
   };
 
+    // Function to handle editing an user
+    const onEdit = async (id) => {
+      navigate(`/admin/edit-user/${id}`)
+    };
   return (
     <div>
       <TopNavbar />
       <div className="flex">
         <SideNavbar />
-        <div className="container mx-auto mt-8 p-8">
+        <div className="container mx-auto mt-2 p-8">
           <h2 className="text-2xl mb-4">Farmers</h2>
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
@@ -51,7 +56,7 @@ const FarmersPage = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {farmers.map((farmer) => (
+              {farmers?.map((farmer) => (
                 <tr key={farmer._id}>
                   <td className="px-6 py-4 whitespace-nowrap">{farmer.fullName}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{farmer.phone}</td>
@@ -61,6 +66,12 @@ const FarmersPage = () => {
                   <td className="px-6 py-4 whitespace-nowrap">{farmer.state}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{farmer.zipCode}</td>
                   <td className="text-left py-3 px-4">
+                  <button
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 rounded"
+                      onClick={() => onEdit(farmer?._id)}
+                    >
+                      &#x270E;
+                    </button>
                     <button
                       className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                       onClick={() => handleDelete(farmer._id)}

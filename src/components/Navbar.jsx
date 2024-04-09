@@ -73,6 +73,9 @@ function SideNavbar() {
             <a href="/admin/dashboard" className="block px-4 py-2 text-lg text-gray-800 hover:bg-green-400 hover:text-white">Dashboard</a>
           </li>
           <li>
+            <a href="/admin/adduser" className="block px-4 py-2 text-lg text-gray-800 hover:bg-green-400 hover:text-white">Add Users</a>
+          </li>
+          <li>
             <a href="/admin/farmers" className="block px-4 py-2 text-lg text-gray-800 hover:bg-green-400 hover:text-white">Farmers</a>
           </li>
           <li>

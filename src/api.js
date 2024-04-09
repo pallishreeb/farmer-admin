@@ -7,10 +7,10 @@ axios.defaults.baseURL = 'http://localhost:3000/api';
 // axios.defaults.baseURL = 'http://172.105.35.214/api';
 
 // Function to handle admin login
-export const adminLogin = async (phone, otp) => {
+export const adminLogin = async (phone, otp,password) => {
     // eslint-disable-next-line no-useless-catch
     try {
-        const response = await axios.post('/admin/login', { phone, otp });
+        const response = await axios.post('/admin/login', { phone, otp, password });
         return response.data;
     } catch (error) {
         throw error;
@@ -274,3 +274,50 @@ export const deleteMessage = async (messageId,token) => {
       throw error; // Throw the error to handle it in the component
     }
   };
+
+  // Function to update user profile
+export const updateUserProfile = async (userId, userData) => {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    const response = await axios.put(`/admin/update/${userId}`, userData);
+    return response.data; // Return the response data
+  } catch (error) {
+    throw error; // Throw the error if request fails
+  }
+};
+
+export const getUserDetails = async (userId) => {
+  try {
+    const response = await axios.get(`/admin/${userId}`);
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to fetch user details');
+  }
+};
+
+
+// Function to create an user
+export const createUser = async ({phone,password,userType}) => {
+  try {
+    const response = await axios.post('/admin/register', {
+      phone,
+      password,
+      userType
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response.data.error || 'Failed to create user';
+  }
+};
+
+export const updatePassword = async (phone, newPassword) => {
+  try {
+    const response = await axios.put(`/admin/reset-password`, {
+      phone,
+      newpassword: newPassword,
+    });
+    return response.data;
+  } catch (error) {
+    throw error.response.data.error || 'Failed to update password. Please try again later.';
+  }
+};

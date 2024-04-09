@@ -1,7 +1,7 @@
 import React from 'react';
 
 function CategoryTable({ categories, onEdit, onDelete }) {
-  console.log(categories)
+  // console.log(categories)
   return (
     <div>
       <table className="min-w-full bg-white">

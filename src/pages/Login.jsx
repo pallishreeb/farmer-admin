@@ -7,6 +7,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [phone, setPhone] = useState('');
   const [otp, setOtp] = useState('');
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -17,21 +18,29 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!phone || !otp) {
-      toast.error('Please provide your phone number and OTP to login!');
+    if (!phone ) {
+      toast.error('Please provide your phone number  to login!');
       return;
     }
 
+
     try {
-      const response = await adminLogin(phone, otp);
+      const response = await adminLogin(phone,otp,password);
+      if(response?.userType  == "admin"){
       // Assuming the API returns a token upon successful login
       const token = response.token;
       localStorage.setItem('token', token); // Save the token to local storage
       localStorage.setItem('agri_user_id', response?.user_id);
       navigate('/admin/dashboard');
+      }else{
+        toast.error('You are not authorised for this site.');
+        setPassword('')
+      }
     } catch (error) {
-      console.error('Login error:', error);
-      toast.error('Failed to login. Please check your phone number and OTP.');
+      console.error('Login error:', error?.response?.data);
+      setOtp('')
+      setPassword('')
+      toast.error(error?.response?.data?.Message || 'Failed to login. Please check your phone number and OTP.');
     }
   };
 
@@ -78,6 +87,28 @@ const Login = () => {
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
               />
+            </div>
+            <h5 className='text-center'>Or</h5>
+            <div className="mb-6">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+                Password
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="password"
+                type="text"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            {/* Forgot Password link */}
+            <div className="mb-6 text-right">
+              <Link to="/reset-password"
+                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+              >
+                Forgot password?
+              </Link>
             </div>
             <div className="flex items-center justify-between">
               <button

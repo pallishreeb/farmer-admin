@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CategoryTable, AddCategoryButton } from '../components/CategoryTable';
 import { SideNavbar, TopNavbar } from '../components/Navbar';
-import { getAllCategories, deleteCategory, updateCategory } from '../api'; // Import the API functions
+import { getAllCategories, deleteCategory } from '../api'; // Import the API functions
 import { useNavigate } from 'react-router-dom';
 
 function Categories() {
@@ -50,7 +50,7 @@ const navigate = useNavigate()
       <TopNavbar />
       <div className="flex">
         <SideNavbar />
-        <div className="container mx-auto p-2">
+        <div className="container mx-auto mt-4 p-2">
         <div className='flex justify-between'>
         <h2 className="text-2xl mb-4">Categories</h2>
           <AddCategoryButton handleAddCategory={handleAddCategory} className="mt-8" />

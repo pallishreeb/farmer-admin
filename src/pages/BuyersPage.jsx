@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { deleteUser, getAllBuyers } from '../api'; // Import the getAllBuyers and deleteUser functions from api.js
 import { SideNavbar, TopNavbar } from '../components/Navbar';
 
 const BuyersPage = () => {
   const [buyers, setBuyers] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetchData();
   }, []);
@@ -30,12 +31,16 @@ const BuyersPage = () => {
     }
   };
 
+  // Function to handle editing an user
+  const onEdit = async (id) => {
+    navigate(`/admin/edit-user/${id}`)
+  };
   return (
     <div>
       <TopNavbar />
       <div className="flex">
         <SideNavbar />
-        <div className="container mx-auto mt-8 p-8">
+        <div className="container mx-auto mt-2 p-8">
           <h2 className="text-2xl mb-4">Buyers</h2>
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
@@ -51,7 +56,7 @@ const BuyersPage = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {buyers.map((buyer) => (
+              {buyers?.map((buyer) => (
                 <tr key={buyer._id}>
                   <td className="px-6 py-4 whitespace-nowrap">{buyer.fullName}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{buyer.phone}</td>
@@ -61,6 +66,13 @@ const BuyersPage = () => {
                   <td className="px-6 py-4 whitespace-nowrap">{buyer.state}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{buyer.zipCode}</td>
                   <td className="text-left py-3 px-4">
+
+                  <button
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 rounded"
+                      onClick={() => onEdit(buyer._id)}
+                    >
+                      &#x270E;
+                    </button>
                     <button
                       className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                       onClick={() => handleDelete(buyer._id)}

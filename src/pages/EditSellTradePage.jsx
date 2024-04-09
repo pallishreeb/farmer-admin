@@ -83,7 +83,7 @@ const EditSellTradePage = () => {
     <TopNavbar/>
     <div className="flex">
       <SideNavbar/>
-    <div className="container mx-auto mt-8 p-8">
+    <div className="container mx-auto mt-2 p-8">
       <h2 className="text-2xl mb-4">Edit Sell Trade</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

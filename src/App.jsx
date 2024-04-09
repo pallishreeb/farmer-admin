@@ -15,6 +15,9 @@ import FarmersPage from "./pages/FarmersPage";
 import EditContractFarming from './pages/EditContractFarming'
 import InboxPage from "./pages/InboxPage";
 import SenderMessagesPage from "./pages/SenderMessagesPage";
+import AddUser from "./pages/AddUser";
+import EditUser from "./pages/EditUser";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
 
@@ -36,7 +39,9 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/admin/dashboard" element={<Home />} />
+        <Route path="/admin/adduser" element={<AddUser />} />
         <Route path="/admin/categories" element={<Categories />} />
         <Route path="/admin/queries" element={<InboxPage />} />
         <Route path="/admin/buyers" element={<BuyersPage />} />
@@ -48,6 +53,7 @@ function App() {
         <Route path="/admin/addcategory" element={<AddCategoryPage />} />
         <Route path="/admin/editcategory/:id" element={<EditCategoryPage />} />
         <Route path="/admin/sender-messages/:userId" element={<SenderMessagesPage />} />
+        <Route path="/admin/edit-user/:id" element={<EditUser/>} />
       </Routes>
     </>
   )
