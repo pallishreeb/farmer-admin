@@ -39,7 +39,7 @@ const InboxPage = () => {
               </div>
               <span className="text-gray-600">&#x260E; {message?.sender?.phone}</span>
             </div>
-            <Link to={`/admin/sender-messages/${message.sender._id}`} className="font-semibold">
+            <Link to={`/admin/sender-messages/${message.sender?._id}`} className="font-semibold">
             <p className="italic">{message?.text}</p>
             </Link>
           </li>
