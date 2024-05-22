@@ -75,7 +75,7 @@ const Login = () => {
                 onChange={(e) => setPhone(e.target.value)}
               />
             </div>
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="otp">
                 OTP
               </label>
@@ -87,8 +87,8 @@ const Login = () => {
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
               />
-            </div>
-            <h5 className='text-center'>Or</h5>
+            </div> */}
+            {/* <h5 className='text-center'>Or</h5> */}
             <div className="mb-6">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                 Password

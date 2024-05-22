@@ -7,8 +7,8 @@ function CategoryTable({ categories, onEdit, onDelete }) {
       <table className="min-w-full bg-white">
         <thead className="bg-gray-100 text-black">
           <tr>
-            <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Category Name</th>
             <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Parent Category</th>
+            <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Product</th>
             <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Base Price</th>
             <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Unit</th>
             <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Actions</th>
