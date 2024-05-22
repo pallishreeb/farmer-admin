@@ -101,6 +101,20 @@ const EditSellTradePage = () => {
           />
         </div>
         <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="quantity">
+          Quantity
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="quantity"
+            type="text"
+            placeholder="Enter quantity"
+            name="quantity"
+            value={sellTradeData.quantity}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="category">
             Category
         </label>
@@ -155,6 +169,48 @@ const EditSellTradePage = () => {
             type="date"
             name="availableToDate"
             value={sellTradeData.availableToDate}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="variety">
+          Variety
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="variety"
+            type="text"
+            placeholder="Enter variety"
+            name="variety"
+            value={sellTradeData.variety}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="grade">
+          Grade
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="grade"
+            type="text"
+            placeholder="Enter grade"
+            name="grade"
+            value={sellTradeData.grade}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="pickuplocation">
+          Pickup Location
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="pickuplocation"
+            type="text"
+            placeholder="Enter pickuplocation"
+            name="pickuplocation"
+            value={sellTradeData.pickuplocation}
             onChange={handleChange}
           />
         </div>

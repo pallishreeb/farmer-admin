@@ -142,6 +142,32 @@ const EditContractFarming = () => {
             onChange={handleChange}
           />
         </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="quantity">
+          Quantity
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="quantity"
+            type="text"
+            name="quantity"
+            value={contractFarming.quantity}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="quality">
+          Quality
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="quality"
+            type="text"
+            name="quality"
+            value={contractFarming.quality}
+            onChange={handleChange}
+          />
+        </div>
         <div className="flex items-center justify-between">
           <button
             className="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"

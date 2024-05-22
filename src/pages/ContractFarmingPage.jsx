@@ -32,6 +32,7 @@ const ContractFarmingPage = () => {
           request._id === farmingRequestId ? { ...request, approved: true } : request
         )
       );
+      fetchData();
     } catch (error) {
       console.error('Error approving farming request:', error);
     }
