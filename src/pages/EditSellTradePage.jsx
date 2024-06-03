@@ -84,7 +84,7 @@ const EditSellTradePage = () => {
     <div className="flex">
       <SideNavbar/>
     <div className="container mx-auto mt-2 p-8">
-      <h2 className="text-2xl mb-4">Edit Sell Trade</h2>
+      <h2 className="text-2xl mb-4">Edit Auction Farming</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">

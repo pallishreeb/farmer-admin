@@ -41,7 +41,7 @@ const navigate = useNavigate()
     <div className="flex">
       <SideNavbar />
     <div className="container mx-auto mt-2 p-8">
-      <h2 className="text-2xl mb-4">Sell Trades</h2>
+      <h2 className="text-2xl mb-4">Auction Farming</h2>
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>

@@ -80,8 +80,24 @@ const SenderMessagesPage = () => {
                 <div className="message-text">{message.text}</div>
                 <div className="message-info">
                 {message.sender === userId ? user?.fullName : 'admin'} - {new Date(message.timestamp).toLocaleString()}
+                {message.product && (
+                  <div className="product-info">
+                    <span className="product-name">Product Name -  {message.product.product}{","} ID - {message.product._id}  </span>
+                    <br/>
+                    <span className="product-price">Price - {message.product.price}</span> {" "}
+                    <span className="product-price">quantity - {message.product.quantity}</span>
+                    </div>
+                )}
+                {message.contractFarming && (
+                  <div className="product-info">
+                    <span className="product-name">Product Name -  {message.contractFarming.commodity}{","} ID - {message.contractFarming._id}  </span>
+                    <br/>
+                    {/* <span className="product-price">Price - {message.contractFarming.price}</span> {" "} */}
+                    <span className="product-price">quantity - {message.contractFarming.quantity}</span>
+                    </div>
+                )}
                 {message.contractFarming &&  <button onClick={() => navigate(`/admin/sender-messages/${message?.contractFarming.buyerId}`)} className="bg-green-500 p-1 rounded text-white float-end ml-2">Chat With Buyer</button>}
-                {message.product &&  <button onClick={() => navigate(`/admin/sender-messages/${message.product?.farmer_id}`)} className="bg-green-500 p-1 rounded text-white float-end ml-2">Chat With Farmer</button>}}
+                {message.product &&  <button onClick={() => navigate(`/admin/sender-messages/${message.product?.farmer_id}`)} className="bg-green-500 p-1 rounded text-white float-end ml-2">Chat With Farmer</button>}
                 <button onClick={() => handleDelete(message._id)} className="bg-red-500 p-1 rounded text-white float-end">Delete</button>
                 </div>
               </div>

@@ -85,7 +85,7 @@ function SideNavbar() {
             <a href="/admin/categories" className="block px-4 py-2 text-lg text-gray-800 hover:bg-green-400 hover:text-white">Categories</a>
           </li>
           <li>
-            <a href="/admin/selltrades" className="block px-4 py-2 text-lg text-gray-800 hover:bg-green-400 hover:text-white">Sell Trades</a>
+            <a href="/admin/selltrades" className="block px-4 py-2 text-lg text-gray-800 hover:bg-green-400 hover:text-white">Auction Farming</a>
           </li>
           <li>
             <a href="/admin/contract-farming" className="block px-4 py-2 text-lg text-gray-800 hover:bg-green-400 hover:text-white">Contract Farming</a>

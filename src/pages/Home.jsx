@@ -16,7 +16,7 @@ const Home = () => {
         <p className="text-lg text-center mb-8">Manage your platform efficiently with our user-friendly admin dashboard.</p>
         <div className="flex justify-center">
           <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-4" onClick={() => navigate('/admin/selltrades')}>
-            View Sell Trades
+            View Auction Farming
           </button>
           <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-4" onClick={() => navigate('/admin/contract-farming')}>
           View Contract Farmings
