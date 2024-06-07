@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getAllContractFarmingRequests, approveFarmingRequest, deleteContractFarmingRequest } from '../api';
 import { SideNavbar, TopNavbar } from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
-
+const url = 'http://172.105.35.214'
 const ContractFarmingPage = () => {
   const [farmingRequests, setFarmingRequests] = useState([]);
   const navigate = useNavigate();
@@ -58,11 +58,14 @@ const ContractFarmingPage = () => {
     <TopNavbar />
     <div className="flex">
       <SideNavbar />
-    <div className="container mx-auto mt-2 p-8">
+    <div className="container mx-auto mt-2 p-8 overflow-x-auto overflow-y-auto" style={{maxHeight:"100vh"}}>
       <h2 className="text-2xl mb-4">Contract Farmings</h2>
       <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Image
+                </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Product
                 </th>
@@ -76,10 +79,16 @@ const ContractFarmingPage = () => {
                 Quantity
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Quantity Unit
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Quoted Price
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Location
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Delivery Time
+                Delivery Date
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Buyer 
@@ -98,12 +107,17 @@ const ContractFarmingPage = () => {
             <tbody className="bg-white divide-y divide-gray-200">
               {farmingRequests?.map((request) => (
                 <tr key={request._id}>
-                  <td className="px-6 py-4 whitespace-nowrap">{request.commodity}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{request.category}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{request.quality}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{request.quantity}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{request.location}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{request.deliveryTime}</td>
+                   <td className="px-2 py-4 whitespace-nowrap">
+                <img src={`${url}/${request.image[0]}`} alt='img' className='w-12 h-12' />
+              </td>
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.commodity}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.category}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.quality}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.quantity}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.priceQuantityUnit}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.price}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.location}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.deliveryTime}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{request.buyerId?.fullName}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{request.buyerId?.phone}</td>
                   <td className="text-left py-3 px-2">

@@ -15,41 +15,55 @@ const EditContractFarming = () => {
     category: '',
     commodity: '',
     deliveryTime: '',
+    price: '',
+    priceQuantityUnit: '',
   });
   const [products, setProducts] = useState([]);
   const token = localStorage.getItem('token');
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const [day, month, year] = dateString.split('-');
+    return `${year}-${month}-${day}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-
         const response = await getcontractFarmingById(token, id);
-        // console.log(response.farmingRequest)
-        setContractFarming(response?.farmingRequest);
+        const farmingRequest = response.farmingRequest;
+        setContractFarming({
+          ...farmingRequest,
+          deliveryTime: formatDate(farmingRequest.deliveryTime),
+        });
       } catch (error) {
-        console.error('Error fetching sell trade:', error);
-        toast.error('Failed to fetch sell trade data');
+        console.error('Error fetching contract farming data:', error);
+        toast.error('Failed to fetch contract farming data');
       }
     };
 
     fetchData();
+  }, [id, token]);
 
-  }, [id]);
   useEffect(() => {
-   
-     fetchProducts()
-  }, [contractFarming?.category]);
+    const fetchProducts = async () => {
+      try {
+        const { result } = await getCategoryByParent(token, contractFarming.category);
+        setProducts(result);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        toast.error('Failed to fetch products');
+      }
+    };
+
+    if (contractFarming.category) {
+      fetchProducts();
+    }
+  }, [contractFarming.category, token]);
   
   const handleCategoryChange = (e) => {
     const selectedCategory = e.target.value;
     setContractFarming({ ...contractFarming, category: selectedCategory });
   };
-  
-  const fetchProducts = async () =>{
-    // console.log(contractFarming?.category)
-    const { result } = await getCategoryByParent(token,contractFarming?.category);
-    // console.log(result)
-    setProducts(result);
-   } 
 
   
   const handleProductChange = (e) => {
@@ -165,6 +179,32 @@ const EditContractFarming = () => {
             type="text"
             name="quality"
             value={contractFarming.quality}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
+          Price
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="price"
+            type="text"
+            name="price"
+            value={contractFarming.price}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="priceQuantityUnit">
+          Price Quantity Unit
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="priceQuantityUnit"
+            type="text"
+            name="priceQuantityUnit"
+            value={contractFarming.priceQuantityUnit}
             onChange={handleChange}
           />
         </div>

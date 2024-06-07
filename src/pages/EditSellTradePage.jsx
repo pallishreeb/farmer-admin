@@ -21,13 +21,34 @@ const EditSellTradePage = () => {
   });
   const [products, setProducts] = useState([]);
   const token = localStorage.getItem('token');
+
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+
+    // Add leading zero for single-digit months and days
+    if (month < 10) month = `0${month}`;
+    if (day < 10) day = `0${day}`;
+
+    return `${year}-${month}-${day}`;
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
 
         const response = await getSellTradeById(token, id);
         // console.log(response.result)
-        setSellTradeData(response?.result);
+        const { result } = response;
+        // Ensure date fields are formatted correctly
+        const formattedData = {
+          ...result,
+          availableFromDate: formatDate(result.availableFromDate),
+          availableToDate: formatDate(result.availableToDate)
+        };
+        setSellTradeData(formattedData);
       } catch (error) {
         console.error('Error fetching sell trade:', error);
         toast.error('Failed to fetch sell trade data');
@@ -36,24 +57,26 @@ const EditSellTradePage = () => {
 
     fetchData();
 
-  }, [id]);
+  }, [id,token]);
   useEffect(() => {
-   
-     fetchProducts()
-  }, [sellTradeData?.category]);
-  const handleCategoryChange = (e) => {
-    const selectedCategory = e.target.value;
-    setSellTradeData({ ...sellTradeData, category: selectedCategory });
-  };
-  
+     
   const fetchProducts = async () =>{
     console.log(sellTradeData?.category)
     const { result } = await getCategoryByParent(token,sellTradeData?.category);
     // console.log(result)
     setProducts(result);
    } 
+   if(sellTradeData?.category){
+     fetchProducts()
+   }
+  }, [sellTradeData?.category,token]);
 
-  
+  const handleCategoryChange = (e) => {
+    const selectedCategory = e.target.value;
+    setSellTradeData({ ...sellTradeData, category: selectedCategory });
+  };
+
+
   const handleProductChange = (e) => {
     const selectedProduct = e.target.value;
     setSellTradeData({ ...sellTradeData, product: selectedProduct });

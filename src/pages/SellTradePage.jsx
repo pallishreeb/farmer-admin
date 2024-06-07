@@ -40,7 +40,7 @@ const navigate = useNavigate()
     <TopNavbar />
     <div className="flex">
       <SideNavbar />
-    <div className="container mx-auto mt-2 p-8">
+    <div className="container mx-auto mt-2 p-8 overflow-x-auto overflow-y-auto" style={{maxHeight:"100vh"}}>
       <h2 className="text-2xl mb-4">Auction Farming</h2>
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
@@ -48,8 +48,9 @@ const navigate = useNavigate()
           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quoted Price</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity Unit</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Variety</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Grade</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Farmer</th>
@@ -69,6 +70,7 @@ const navigate = useNavigate()
               <td className="px-6 py-4 whitespace-nowrap">{trade.category}</td>        
               <td className="px-6 py-4 whitespace-nowrap">{trade.price}</td>
               <td className="px-6 py-4 whitespace-nowrap">{trade.quantity}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{trade?.priceQuantityUnit}</td>
               <td className="px-6 py-4 whitespace-nowrap">{trade.variety}</td>
               <td className="px-6 py-4 whitespace-nowrap">{trade.grade}</td>
               <td className="px-6 py-4 whitespace-nowrap">{trade.farmer_id?.fullName}</td>
