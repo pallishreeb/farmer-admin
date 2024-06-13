@@ -73,8 +73,9 @@ const ContractFarmingPage = () => {
                 Category
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Quality
+                Quoted Price
                 </th>
+                
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Quantity
                 </th>
@@ -82,19 +83,20 @@ const ContractFarmingPage = () => {
                 Quantity Unit
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Quoted Price
+                Quality
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Location
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Delivery Date
-                </th>
+               
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Buyer 
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Contact
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Delivery Date
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Approve
@@ -112,14 +114,15 @@ const ContractFarmingPage = () => {
               </td>
                   <td className="px-6 py-4 whitespace-nowrap">{request?.commodity}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{request?.category}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{request?.quality}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.price}</td>
+                  
                   <td className="px-6 py-4 whitespace-nowrap">{request?.quantity}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{request?.priceQuantityUnit}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{request?.price}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{request?.location}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">{request?.deliveryTime}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.quality}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.location}</td> 
                   <td className="px-6 py-4 whitespace-nowrap">{request.buyerId?.fullName}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{request.buyerId?.phone}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.deliveryTime}</td>
                   <td className="text-left py-3 px-2">
                   {request.isApproved ? <button
                         className="bg-green-500  text-white font-bold py-2 px-2 mr-2 rounded"
