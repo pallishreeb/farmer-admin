@@ -91,6 +91,9 @@ function SideNavbar() {
             <a href="/admin/contract-farming" className="block px-4 py-2 text-lg text-gray-800 hover:bg-green-400 hover:text-white">Contract Farming</a>
           </li>
           <li>
+            <a href="/admin/orders" className="block px-4 py-2 text-lg text-gray-800 hover:bg-green-400 hover:text-white">Orders</a>
+          </li>
+          <li>
             <a href="/admin/queries" className="block px-4 py-2 text-lg text-gray-800 hover:bg-green-400 hover:text-white">Query Messages</a>
           </li>
         </ul>

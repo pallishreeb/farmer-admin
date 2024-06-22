@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { getAllContractFarmingRequests, approveFarmingRequest, deleteContractFarmingRequest } from '../api';
+import { getAllContractFarmingRequests, approveFarmingRequest, deleteContractFarmingRequest,url } from '../api';
 import { SideNavbar, TopNavbar } from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
-const url = 'http://172.105.35.214'
+
 const ContractFarmingPage = () => {
   const [farmingRequests, setFarmingRequests] = useState([]);
   const navigate = useNavigate();
@@ -75,7 +75,9 @@ const ContractFarmingPage = () => {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Quoted Price
                 </th>
-                
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Base Price
+                </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Quantity
                 </th>
@@ -110,12 +112,14 @@ const ContractFarmingPage = () => {
               {farmingRequests?.map((request) => (
                 <tr key={request._id}>
                    <td className="px-2 py-4 whitespace-nowrap">
-                <img src={`${url}/${request.image[0]}`} alt='img' className='w-12 h-12' />
+                   <a href={`${url}/${request?.image[0]}`} target="_blank" rel="noopener noreferrer">
+                   <img src={`${url}/${request?.image[0]}`} alt='img' className='w-12 h-12' />
+                </a>
               </td>
                   <td className="px-6 py-4 whitespace-nowrap">{request?.commodity}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{request?.category}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{request?.price}</td>
-                  
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.basePrice}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{request?.quantity}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{request?.priceQuantityUnit}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{request?.quality}</td>

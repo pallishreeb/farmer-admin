@@ -6,6 +6,8 @@ import axios from 'axios';
 //axios.defaults.baseURL = 'http://localhost:3000/api';
 axios.defaults.baseURL = 'http://172.105.35.214/api';
 
+export const url =  'http://172.105.35.214'
+
 // Function to handle admin login
 export const adminLogin = async (phone, otp,password) => {
     // eslint-disable-next-line no-useless-catch
@@ -320,4 +322,19 @@ export const updatePassword = async (phone, newPassword) => {
   } catch (error) {
     throw error.response.data.error || 'Failed to update password. Please try again later.';
   }
+};
+
+//get orders
+export const fetchOrders = async (token) => {
+  try {
+    const response = await axios.get('/orders',{ headers: { 'x-access-token': token } });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching orders:', error);
+    throw error;
+  }
+};
+
+export const deleteOrder = async (token, orderId) => {
+  await axios.delete(`/orders/${orderId}`, { headers: { 'x-access-token': token }});
 };

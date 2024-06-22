@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { deleteSellTrade, getAllSellTrades } from '../api'; // Import the getAllSellTrades function from api.js
+import { deleteSellTrade, getAllSellTrades,url } from '../api'; // Import the getAllSellTrades function from api.js
 import { SideNavbar, TopNavbar } from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
-const url = 'http://172.105.35.214'
+
 const SellTradePage = () => {
   const [sellTrades, setSellTrades] = useState([]);
 const navigate = useNavigate()
@@ -49,6 +49,7 @@ const navigate = useNavigate()
           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quoted Price</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Base Price</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity Unit</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Variety</th>
@@ -65,11 +66,14 @@ const navigate = useNavigate()
           {sellTrades.map((trade) => (
             <tr key={trade._id}>
                <td className="px-2 py-4 whitespace-nowrap">
-                <img src={`${url}/${trade.image[0]}`} alt='img' className='w-12 h-12' />
+               <a href={`${url}/${trade?.image[0]}`} target="_blank" rel="noopener noreferrer">
+                <img src={`${url}/${trade?.image[0]}`} alt='img' className='w-12 h-12' />
+                </a>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">{trade.product}</td>
               <td className="px-6 py-4 whitespace-nowrap">{trade.category}</td>        
               <td className="px-6 py-4 whitespace-nowrap">{trade.price}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{trade?.basePrice}</td>
               <td className="px-6 py-4 whitespace-nowrap">{trade.quantity}</td>
               <td className="px-6 py-4 whitespace-nowrap">{trade?.priceQuantityUnit}</td>
               <td className="px-6 py-4 whitespace-nowrap">{trade.variety}</td>

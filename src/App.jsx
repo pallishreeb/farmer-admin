@@ -18,6 +18,7 @@ import SenderMessagesPage from "./pages/SenderMessagesPage";
 import AddUser from "./pages/AddUser";
 import EditUser from "./pages/EditUser";
 import ResetPassword from "./pages/ResetPassword";
+import OrdersPage from './pages/OrdersPage';
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
         <Route path="/admin/buyers" element={<BuyersPage />} />
         <Route path="/admin/farmers" element={<FarmersPage />} />
         <Route path="/admin/selltrades" element={<SellTradePage />} />
+        <Route path="/admin/orders" element={<OrdersPage />} />
         <Route path="/admin/edit-selltrade/:id" element={<EditSellTradePage />} />
         <Route path="/admin/contract-farming" element={<ContractFarmingPage />} />
         <Route path="/admin/edit-contract-farming/:id" element={<EditContractFarming />} />
