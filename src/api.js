@@ -3,8 +3,8 @@
 import axios from 'axios';
 
 // Set the base URL for all API requests
-//axios.defaults.baseURL = 'http://localhost:3000/api';
-axios.defaults.baseURL = 'http://172.105.35.214/api';
+axios.defaults.baseURL = 'http://localhost:3000/api';
+// axios.defaults.baseURL = 'http://172.105.35.214/api';
 
 export const url =  'http://172.105.35.214'
 

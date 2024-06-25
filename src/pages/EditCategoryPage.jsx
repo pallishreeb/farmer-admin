@@ -1,5 +1,3 @@
-// EditCategoryPage.jsx
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -13,7 +11,9 @@ const EditCategoryPage = () => {
     parentCategory: '',
     name: '',
     unit: '',
-    price: ''
+    price: '',
+    variety: [],
+    grade: ''
   });
 
   useEffect(() => {
@@ -35,6 +35,21 @@ const EditCategoryPage = () => {
     setCategoryData({ ...categoryData, [name]: value });
   };
 
+  const handleVarietyChange = (index, value) => {
+    const newVariety = [...categoryData.variety];
+    newVariety[index] = value;
+    setCategoryData({ ...categoryData, variety: newVariety });
+  };
+
+  const addVarietyField = () => {
+    setCategoryData({ ...categoryData, variety: [...categoryData.variety, ''] });
+  };
+
+  const removeVarietyField = (index) => {
+    const newVariety = categoryData.variety.filter((_, i) => i !== index);
+    setCategoryData({ ...categoryData, variety: newVariety });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -50,13 +65,13 @@ const EditCategoryPage = () => {
 
   return (
     <div>
-    <TopNavbar />
-    <div className="flex">
-      <SideNavbar/>
-    <div className="container mx-auto mt-2 p-8">
-      <h2 className="text-2xl mb-4">Edit Category</h2>
-      <form onSubmit={handleSubmit}>
-      <div className="mb-4">
+      <TopNavbar />
+      <div className="flex">
+        <SideNavbar/>
+        <div className="container mx-auto mt-2 p-8">
+          <h2 className="text-2xl mb-4">Edit Category</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="parentCategory">
                 Parent Category
               </label>
@@ -73,59 +88,107 @@ const EditCategoryPage = () => {
                 <option value="Vegetables">Vegetables</option>
               </select>
             </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-            Name
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="name"
-            type="text"
-            placeholder="Enter category name"
-            name="name"
-            value={categoryData.name}
-            onChange={handleChange}
-          />
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                Name
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="name"
+                type="text"
+                placeholder="Enter category name"
+                name="name"
+                value={categoryData.name}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="unit">
+                Unit
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="unit"
+                type="text"
+                placeholder="Enter unit"
+                name="unit"
+                value={categoryData.unit}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
+                Price
+              </label>
+              <input
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="price"
+                type="text"
+                placeholder="Enter price"
+                name="price"
+                value={categoryData.price}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="grade">
+                Grade
+              </label>
+              <select
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="grade"
+                name="grade"
+                value={categoryData.grade}
+                onChange={handleChange}
+              >
+                <option value="">Select grade</option>
+                <option value="I">I</option>
+                <option value="II">II</option>
+                <option value="III">III</option>
+                <option value="IV">IV</option>
+              </select>
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Variety
+              </label>
+              {categoryData.variety.map((v, index) => (
+                <div key={index} className="flex mb-2">
+                  <input
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2"
+                    type="text"
+                    placeholder="Enter variety"
+                    value={v}
+                    onChange={(e) => handleVarietyChange(index, e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={() => removeVarietyField(index)}
+                  >
+                    Remove
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                onClick={addVarietyField}
+              >
+                Add Variety
+              </button>
+            </div>
+            <div className="flex items-center justify-between">
+              <button
+                className="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
+                type="submit"
+              >
+                Update Category
+              </button>
+            </div>
+          </form>
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="unit">
-            Unit
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="unit"
-            type="text"
-            placeholder="Enter unit"
-            name="unit"
-            value={categoryData.unit}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="price">
-            Price
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="price"
-            type="text"
-            placeholder="Enter price"
-            name="price"
-            value={categoryData.price}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex items-center justify-between">
-          <button
-            className="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline"
-            type="submit"
-          >
-            Update Category
-          </button>
-        </div>
-      </form>
-    </div>
-    </div>
+      </div>
     </div>
   );
 };
