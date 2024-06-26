@@ -39,11 +39,12 @@ const OrdersPage = () => {
         <TopNavbar />
         <div className="container mx-auto mt-8 p-4">
           <h1 className="text-2xl font-bold mb-4">Orders</h1>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto overflow-y-auto" style={{maxHeight:"100vh"}}>
           <table className="min-w-full bg-white border border-gray-300">
               <thead className="bg-gray-100">
                 <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product Image</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order ID</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product Name</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product Price</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Base Price</th>
@@ -67,6 +68,7 @@ const OrdersPage = () => {
                         <img src={`${url}/${order?.tradeId?.image[0]}`} alt='img' className='w-12 h-12' />
                       </a>
                     </td>
+                    <td className="py-2 px-2 border-b">{order?.orderId}</td>
                     <td className="py-2 px-2 border-b">{order?.tradeId?.product}</td>
                     <td className="py-2 px-2 border-b">{order?.tradeId?.price}</td>
                     <td className="py-2 px-2 border-b">{order?.tradeId?.basePrice}</td>

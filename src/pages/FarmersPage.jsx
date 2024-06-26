@@ -40,11 +40,12 @@ const FarmersPage = () => {
       <TopNavbar />
       <div className="flex">
         <SideNavbar />
-        <div className="container mx-auto mt-2 p-8">
+        <div className="container mx-auto mt-2 p-8 overflow-x-auto overflow-y-auto" style={{maxHeight:"100vh"}}>
           <h2 className="text-2xl mb-4">Farmers</h2>
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Farmer ID</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Address</th>
@@ -58,6 +59,7 @@ const FarmersPage = () => {
             <tbody className="bg-white divide-y divide-gray-200">
               {farmers?.map((farmer) => (
                 <tr key={farmer._id}>
+                  <td className="px-6 py-4 whitespace-nowrap">{farmer?.userId}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{farmer.fullName}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{farmer.phone}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{farmer.address}</td>
@@ -65,7 +67,7 @@ const FarmersPage = () => {
                   <td className="px-6 py-4 whitespace-nowrap">{farmer.city}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{farmer.state}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{farmer.zipCode}</td>
-                  <td className="text-left py-3 px-4">
+                  <td className="text-left ">
                   <button
                       className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-2 rounded"
                       onClick={() => onEdit(farmer?._id)}
@@ -76,7 +78,7 @@ const FarmersPage = () => {
                       className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                       onClick={() => handleDelete(farmer._id)}
                     >
-                      Delete
+                      X
                     </button>
                   </td>
                 </tr>

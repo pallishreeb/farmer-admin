@@ -67,6 +67,9 @@ const ContractFarmingPage = () => {
                 Image
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Contract Farming ID
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Product
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -116,6 +119,7 @@ const ContractFarmingPage = () => {
                    <img src={`${url}/${request?.image[0]}`} alt='img' className='w-12 h-12' />
                 </a>
               </td>
+                  <td className="px-6 py-4 whitespace-nowrap">{request?.contractFarmingId}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{request?.commodity}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{request?.category}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{request?.price}</td>

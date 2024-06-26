@@ -46,6 +46,7 @@ const navigate = useNavigate()
         <thead className="bg-gray-50">
           <tr>
           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
+          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Auction farming ID</th>
           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
           <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quoted Price</th>
@@ -70,6 +71,7 @@ const navigate = useNavigate()
                 <img src={`${url}/${trade?.image[0]}`} alt='img' className='w-12 h-12' />
                 </a>
               </td>
+              <td className="px-6 py-4 whitespace-nowrap">{trade?.sellTradeId}</td>
               <td className="px-6 py-4 whitespace-nowrap">{trade.product}</td>
               <td className="px-6 py-4 whitespace-nowrap">{trade.category}</td>        
               <td className="px-6 py-4 whitespace-nowrap">{trade.price}</td>
